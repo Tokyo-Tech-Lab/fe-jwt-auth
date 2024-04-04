@@ -17,6 +17,7 @@ export * from './interfaces';
 export * from './constants';
 export * from './utils';
 export * from './global';
+export * from './api';
 
 export function initService(options: ILibOptions) {
   setLibOptions(options);
