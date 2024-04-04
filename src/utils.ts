@@ -52,7 +52,10 @@ export const checkAccessTokenExpireTime = async () => {
     return;
   }
   const decodeAccessToken: IDecodeToken = jwtDecode(accessToken);
-  if (decodeAccessToken.exp - Date.now() < libOptions.refreshTokenTimeBufferInSecond) {
+  if (
+    libOptions.refreshTokenTimeBufferInSecond &&
+    decodeAccessToken.exp - Date.now() < libOptions.refreshTokenTimeBufferInSecond
+  ) {
     await refreshTokenThrottled();
   }
 };

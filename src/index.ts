@@ -18,7 +18,7 @@ export * from './constants';
 export * from './utils';
 export * from './global';
 
-function initService(options: ILibOptions) {
+export function initService(options: ILibOptions) {
   setLibOptions(options);
   setLocalStorageAuthService(
     options.localStorageAuthService || localStorageAuthServiceDefault,
