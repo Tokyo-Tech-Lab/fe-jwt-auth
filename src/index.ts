@@ -34,12 +34,16 @@ export function initService(options: ILibOptions) {
       // logout
       options?.events?.onLogout?.();
     }
+    let extendHeaders = options?.headers || {};
+    if (typeof options.headers === 'function') {
+      extendHeaders = options.headers(config);
+    }
 
     Object.assign(config, {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${accessToken}`,
-        ...(options?.headers || {}),
+        ...extendHeaders,
         ...config.headers,
       },
     });

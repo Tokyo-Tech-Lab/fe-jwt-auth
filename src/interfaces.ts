@@ -48,11 +48,13 @@ export interface ILocalStorageAuthService {
   resetAll: () => void;
 }
 
+type IHeadersFunction = (config: AxiosRequestConfig) => Record<string, string>;
+
 export interface ILibOptions {
   requestOptions?: AxiosRequestConfig;
   refreshTokenTimeBufferInSecond?: number;
   localStorageAuthService?: ILocalStorageAuthService;
-  headers?: Record<string, string>;
+  headers?: Record<string, string> | IHeadersFunction;
   events?: {
     onLogout?: () => void;
     onForbidden?: () => void;
