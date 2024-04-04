@@ -54,7 +54,7 @@ export const checkAccessTokenExpireTime = async () => {
   const decodeAccessToken: IDecodeToken = jwtDecode(accessToken);
   if (
     libOptions.refreshTokenTimeBufferInSecond &&
-    decodeAccessToken.exp - Date.now() < libOptions.refreshTokenTimeBufferInSecond
+    get(decodeAccessToken, libOptions.expiredTimeKey || 'expiredTime', 0) - Date.now() < libOptions.refreshTokenTimeBufferInSecond
   ) {
     await refreshTokenThrottled();
   }

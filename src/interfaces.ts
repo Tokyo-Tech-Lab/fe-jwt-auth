@@ -62,4 +62,5 @@ export interface ILibOptions {
   refreshTokenRoute?: string;
   accessTokenKey?: string;
   refreshTokenKey?: string;
+  expiredTimeKey?: string;
 }

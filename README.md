@@ -46,6 +46,7 @@ const uses = await axiosInstance.get('/users')
 | refreshTokenRoute | /auth/refresh-token | Url path to refresh token |
 | accessTokenKey | accessToken.token | key to get access token |
 | refreshTokenKey | refreshToken.token | key to get refresh token |
+| expiredTimeKey | expiredTime | key from JWT |
 
 ### ILocalStorageAuthService
 
