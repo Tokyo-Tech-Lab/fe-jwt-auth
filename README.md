@@ -42,7 +42,10 @@ const uses = await axiosInstance.get('/users')
 | refreshTokenTimeBufferInSecond | 0 | Time buffer in second. |
 | localStorageAuthService | localStorageAuthServiceDefault | ILocalStorageAuthService |
 | headers |  | Custom request header. |
-| events |  | Handle on logout or forbidden 
+| events |  | Handle on logout or forbidden  |
+| refreshTokenRoute | /auth/refresh-token | Url path to refresh token |
+| accessTokenKey | accessToken.token | key to get access token |
+| refreshTokenKey | refreshToken.token | key to get refresh token |
 
 ### ILocalStorageAuthService
 

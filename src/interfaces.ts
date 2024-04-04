@@ -59,4 +59,7 @@ export interface ILibOptions {
     onLogout?: () => void;
     onForbidden?: () => void;
   };
+  refreshTokenRoute?: string;
+  accessTokenKey?: string;
+  refreshTokenKey?: string;
 }

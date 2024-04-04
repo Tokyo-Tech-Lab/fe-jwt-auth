@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
-import { throttle } from 'lodash';
+import { get, throttle } from 'lodash';
 import { HttpStatus, LOCAL_STORAGE_KEY, requestOptions } from './constants';
 import { IDecodeToken } from './interfaces';
 import { libOptions, localStorageAuthService } from './global';
@@ -19,7 +19,7 @@ const getRefreshToken = async () => {
     const refreshToken = localStorageAuthService.getRefreshToken?.();
     const api = axios.create({ ...requestOptions, ...libOptions.requestOptions });
     const response = await api.post(
-      '/auth/refresh-token',
+      libOptions.refreshTokenRoute || '/auth/refresh-token',
       {},
       {
         headers: {
@@ -29,8 +29,8 @@ const getRefreshToken = async () => {
     );
     if (response.status === HttpStatus.OK) {
       const data = response.data?.data;
-      localStorageAuthService.setAccessToken(data?.accessToken?.token);
-      localStorageAuthService.setRefreshToken(data?.refreshToken?.token);
+      localStorageAuthService.setAccessToken(get(data, libOptions.accessTokenKey || 'accessToken.token', ''));
+      localStorageAuthService.setRefreshToken(get(data, libOptions.refreshTokenKey || 'refreshToken.token', ''));
       return;
     }
     // reset local storage
