@@ -34,6 +34,7 @@ export function initService(options: ILibOptions) {
     if (!accessToken) {
       // logout
       options?.events?.onLogout?.();
+      return;
     }
     let extendHeaders = options?.headers || {};
     if (typeof options.headers === 'function') {
