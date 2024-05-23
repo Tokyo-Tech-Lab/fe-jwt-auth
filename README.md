@@ -11,7 +11,7 @@ $ npm i fe-jwt-auth --save
 ## Usage
 
 ```js
-import {initService, axiosInstance} from 'fe-jwt-auth';
+import {initService, axiosInstance, ApiService} from 'fe-jwt-auth';
 
 initService({
     headers: {
@@ -32,6 +32,10 @@ initService({
 
 // call api
 const uses = await axiosInstance.get('/users')
+
+// use ApiService
+const userService = new ApiService({ baseUrl: '/user' }, axiosInstance)
+const userList = userService.list()
 ```
 
 ## Options
