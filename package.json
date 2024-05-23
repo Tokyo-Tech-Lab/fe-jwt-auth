@@ -1,6 +1,6 @@
 {
   "name": "fe-jwt-auth",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "FE jwt auth library",
   "files": [
     "esm",
